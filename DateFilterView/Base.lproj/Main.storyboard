@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sqx-1C-MdF">
+                                <rect key="frame" x="250" y="285" width="101" height="30"/>
+                                <state key="normal" title="showDateView"/>
+                                <connections>
+                                    <action selector="showDateView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rtl-5W-3MB"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开始时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQS-h8-e0M">
+                                <rect key="frame" x="166" y="194" width="68" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="结束时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I9J-xf-L5p">
+                                <rect key="frame" x="366" y="194" width="68" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="I9J-xf-L5p" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="100" id="ANC-Ku-ugf"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="DQS-h8-e0M" secondAttribute="bottom" constant="300" id="GdE-3y-91U"/>
+                            <constraint firstItem="DQS-h8-e0M" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-100" id="ICx-WT-jk7"/>
+                            <constraint firstItem="sqx-1C-MdF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RWT-WW-mAE"/>
+                            <constraint firstItem="sqx-1C-MdF" firstAttribute="top" secondItem="DQS-h8-e0M" secondAttribute="bottom" constant="70" id="rzS-96-N2Q"/>
+                            <constraint firstItem="sqx-1C-MdF" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="t8a-nL-D2A"/>
+                            <constraint firstItem="sqx-1C-MdF" firstAttribute="top" secondItem="I9J-xf-L5p" secondAttribute="bottom" constant="70" id="wH8-ha-KHT"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="GdE-3y-91U"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="endTimeLabel" destination="I9J-xf-L5p" id="dNK-kP-4LR"/>
+                        <outlet property="startTimeLabel" destination="DQS-h8-e0M" id="KAS-8N-YIq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
