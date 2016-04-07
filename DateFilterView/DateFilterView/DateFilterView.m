@@ -44,7 +44,7 @@
  *
  *  @param aDecoder
  *
- *  @return 
+ *  @return
  */
 - (instancetype)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
@@ -73,7 +73,6 @@
 - (void)showDateView{
     
     [self.fatherView addSubview:self.dateBgView];
-    
     [UIView animateWithDuration:0.3
                      animations:^(void) {
                          
@@ -94,6 +93,9 @@
  *  @param sender UITapGestureRecognizer
  */
 - (void)tapClose:(UITapGestureRecognizer *)sender{
+    
+    
+    
     [UIView animateWithDuration:0.3
                      animations:^(void) {
                          
@@ -244,19 +246,19 @@
 - (UIView *)dateView {
     if(_dateView == nil) {
         _dateView = [[UIView alloc] init];
-        _dateView.frame = CGRectMake(0, kScreenSize.height/2*0.9, kScreenSize.width, kScreenSize.height/2);
+        _dateView.frame = CGRectMake(0, kScreenSize.height/2, kScreenSize.width, kScreenSize.height/2);
         _dateView.backgroundColor = [UIColor whiteColor];
         [_dateView addSubview:self.startTimeBtn];
         [_dateView addSubview:self.endTimeBtn];
         self.dateViewFrame = _dateView.frame;
-//配置颜色
+        //配置颜色
         UIColor *color;
         if(self.themeColor){
             color = self.themeColor;
         }else{
             color = kRGBColor(221, 166, 50);
         }
-//配置默认的时间
+        //配置默认的时间
         NSString *startText;
         if(self.defaultStartTime){
             startText = self.defaultStartTime;
@@ -391,6 +393,7 @@
         NSDate *nowDate = [NSDate date];
         if([[self.datePicker.date laterDate:nowDate] isEqualToDate:nowDate]){
             self.startTimeLabel.text = [formatter stringFromDate:self.datePicker.date ];
+            [self performAnimationOnView:self.startTimeLabel duration:0.7 delay:0];
             _startTime = self.startTimeLabel.text;
         }else{
             UIAlertView *alertview = [[UIAlertView alloc]initWithTitle:@"开始时间不合法" message:@"开始时间应早于今天" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
@@ -402,6 +405,7 @@
         if([[startDate earlierDate:self.datePicker.date] isEqualToDate:startDate]){
             self.endTimeLabel.text = [formatter stringFromDate:self.datePicker.date ];
             _endTime = self.endTimeLabel.text;
+            [self performAnimationOnView:self.endTimeLabel duration:0.7 delay:0];
             self.comformBtn.hidden = NO;
         }else{
             UIAlertView *alertview = [[UIAlertView alloc]initWithTitle:@"结束时间不合法" message:@"结束时间应晚于开始时间" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
@@ -411,6 +415,37 @@
     }
 }
 
+/**
+ *  Morph Animation from Canvas
+ *  @param view     animation attach to
+ *  @param duration animation time
+ *  @param delay    animation delay time
+ */
+-(void)performAnimationOnView:(UIView *)view duration:(NSTimeInterval)duration delay:(NSTimeInterval)delay {
+    // Start
+    view.transform = CGAffineTransformMakeScale(1, 1);
+    [UIView animateKeyframesWithDuration:duration/4 delay:delay options:0 animations:^{
+        // End
+        view.transform = CGAffineTransformMakeScale(1, 1.2);
+    } completion:^(BOOL finished) {
+        [UIView animateKeyframesWithDuration:duration/4 delay:0 options:0 animations:^{
+            // End
+            view.transform = CGAffineTransformMakeScale(1.2, 0.9);
+        } completion:^(BOOL finished) {
+            [UIView animateKeyframesWithDuration:duration/4 delay:0 options:0 animations:^{
+                // End
+                view.transform = CGAffineTransformMakeScale(0.9, 0.9);
+            } completion:^(BOOL finished) {
+                [UIView animateKeyframesWithDuration:duration/4 delay:0 options:0 animations:^{
+                    // End
+                    view.transform = CGAffineTransformMakeScale(1, 1);
+                } completion:^(BOOL finished) {
+                    
+                }];
+            }];
+        }];
+    }];
+}
 
 
 @end
